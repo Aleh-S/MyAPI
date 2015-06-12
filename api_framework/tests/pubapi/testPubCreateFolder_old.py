@@ -2,7 +2,7 @@ import requests
 import json
 
 method = 'POST'
-url = 'https://istepanko22.qa-egnyte.com/public-api/v1/fs/Shared/testAPI2'
+url = 'https://istepanko22.qa-egnyte.com/public-api/v1/fs/Shared/testAPI4'
 headers = dict()
 headers['Content-Type'] = 'application/json'
 data = dict()
