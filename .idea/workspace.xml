@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="94fd841d-cb2b-4d52-8c0d-c692d7bbf3f2" name="Default" comment="1st" />
-    <list id="16dfc1bf-b9c6-4e5f-85e8-cf429bb81ccf" name="New changelist" comment="">
+    <list default="true" id="94fd841d-cb2b-4d52-8c0d-c692d7bbf3f2" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/MyCode/555.py" afterPath="$PROJECT_DIR$/MyCode/999.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
+    <list id="16dfc1bf-b9c6-4e5f-85e8-cf429bb81ccf" name="New changelist" comment="" />
     <ignored path="api_class.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea" />
@@ -37,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="555.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/MyCode/555.py">
+      <file leaf-file-name="999.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MyCode/999.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -146,6 +147,7 @@
         <option value="$PROJECT_DIR$/api_framework/tests/config.ini" />
         <option value="$PROJECT_DIR$/api_framework/src/pubapiutils.py" />
         <option value="$PROJECT_DIR$/api_framework/tests/pubapi/testPubCreateFolder.py" />
+        <option value="$PROJECT_DIR$/MyCode/999.py" />
       </list>
     </option>
   </component>
@@ -181,8 +183,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -603,7 +605,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23955432" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32756326" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3274559" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -640,7 +642,8 @@
     <MESSAGE value="old code without function" />
     <MESSAGE value="1st" />
     <MESSAGE value="555" />
-    <option name="LAST_COMMIT_MESSAGE" value="555" />
+    <MESSAGE value="999" />
+    <option name="LAST_COMMIT_MESSAGE" value="999" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1018,10 +1021,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyCode/555.py">
+    <entry file="file://$PROJECT_DIR$/MyCode/999.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
           <folding />
         </state>
       </provider>
