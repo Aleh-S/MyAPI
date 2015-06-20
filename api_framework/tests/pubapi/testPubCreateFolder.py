@@ -2,14 +2,22 @@ from pubapiutils import Calls
 from pubapiutils import Config
 from pubapiutils import Utils
 import httplib
+import nose
+from unittest import TestCase
 
 
-class TestClass:
-    def __init__(self):
-        self.no_json = 'NoJSON'
-        self.calls = Calls()
-        self.config = Config()
-        self.utils = Utils()
+class TestClass(TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        cls.no_json = 'NoJSON'
+        cls.calls = Calls()
+        cls.config = Config()
+        cls.utils = Utils()
+
+    def setUp(self):
+        self.utils.delete_all_except(['Documents'])
+
 
 
     def test_create_5_folders_positive(self):
@@ -22,44 +30,47 @@ class TestClass:
             assert resp.json == self.no_json
             l.append(folder_name)
         for item in l:
-            resp = self.calls.delete_folder(folder_path=self.config.testpath + item)
+            resp = self.calls.delete_folder(item)
             assert resp.status_code == httplib.OK
 
 
-    # def test_create_folder_owner_perms(self):
-    #
-    #     folder_name = self.utils.random_name()
-    #     folder_path = '%s%s' % (self.config.testpath, folder_name)
-    #     self.calls.create_folder(folder_name)
-    #     resp = self.calls.set_perms(folder_path=folder_path, users=self.config.puser, permission='Owner')
-    #     assert resp.status_code == httplib.OK
-
-
-    def test_create_folder_owner_perms(self):
+    def test_create_folder_enough_perms_as_power_user(self):
         folder1 = self.utils.random_name()
         folder2 = self.utils.random_name()
-        folder_path = '%s/%s' % (self.config.testpath, folder1)
-        self.calls.create_folder(folder1)
-        resp = self.calls.set_perms(folder_path=folder_path, users=self.config.puser, permission='Owner')
-        assert resp.status_code == httplib.OK
-        resp = self.calls.list_perms(folder_path=folder_path, users=self.config.puser)
-        assert resp.status_code == httplib.OK
-        assert resp.json['users'][0]['permission'] == 'Owner'
-        assert resp.json['users'][0]['subject'] == self.config.puser
-        assert len(resp.json['groups']) == 0
-        resp = self.calls.create_folder(folder2, path=folder_path, username=self.config.puser)
-        assert resp.status_code == httplib.OK
-        assert resp.json == self.no_json
-
-
-
-
-    """
-    def test_create_folders_positive():
-        no_json = 'NoJSON'
-        for i in range(3):
-            folder_name = 'test_folder2%s' % i
-            resp = calls.create_folder(folder_name)
+        perms = ['Editor', 'Full', 'Owner']
+        for perm in perms:
+            folder_path = '%s/%s' % (self.config.testpath, folder1)
+            self.calls.create_folder(folder1)
+            resp = self.calls.set_perms(folder_path=folder_path, users=self.config.puser, permission=perm)
+            assert resp.status_code == httplib.OK
+            resp = self.calls.list_perms(folder_path=folder_path, users=self.config.puser)
+            assert resp.status_code == httplib.OK
+            assert resp.json['users'][0]['permission'] == perm
+            assert resp.json['users'][0]['subject'] == self.config.puser
+            assert len(resp.json['groups']) == 0
+            resp = self.calls.create_folder(folder2, path=folder_path, username=self.config.puser)
             assert resp.status_code == httplib.CREATED
-            assert resp.json == no_json
-    """
+            assert resp.json == self.no_json
+            self.calls.delete_folder(folder1)
+
+
+    def test_create_folder_not_enough_perms(self):
+        folder1 = self.utils.random_name()
+        folder2 = self.utils.random_name()
+        perms = ['None', 'Viewer']
+        for perm in perms:
+            folder_path + '%s%s' % (self.config.testpath, folder1)
+            self.calls.create_folder(folder1)
+            resp = self.calls.set_perms(folder_path=folder_path, users=self.config.puser, permission=perm )
+            assert resp.status_code == httplib.OK
+            resp = self.calls.create_folder(folder2, path=folder_path, username=self.config.puser)
+            assert resp.status_code == httplib.FORBIDDEN
+            assert resp.json['errorMessage'] == 'You do not have permission to perform this action'
+            self.calls.delete_folder(folder1)
+
+    def test(self):
+        resp = self.calls.list_folders(folder_path='/Shared')
+        assert resp.json == 1
+
+
+
