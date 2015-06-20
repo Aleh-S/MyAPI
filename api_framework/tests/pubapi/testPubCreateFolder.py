@@ -2,7 +2,6 @@ from pubapiutils import Calls
 from pubapiutils import Config
 from pubapiutils import Utils
 import httplib
-import nose
 from unittest import TestCase
 
 
@@ -68,9 +67,9 @@ class TestClass(TestCase):
             assert resp.json['errorMessage'] == 'You do not have permission to perform this action'
             self.calls.delete_folder(folder1)
 
-    def test(self):
-        resp = self.calls.list_folders(folder_path='/Shared')
-        assert resp.json == 1
+    # def test(self):
+    #     resp = self.calls.list_folders(folder_path='/Shared')
+    #     assert resp.json == 1
 
 
 

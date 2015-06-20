@@ -4,6 +4,7 @@ from ConfigParser import SafeConfigParser
 import os
 import inspect
 from random import randint
+import base64
 
 ###############################################################################
 class Config:
@@ -24,6 +25,7 @@ class Config:
 class Calls:
     def __init__(self):
         self.config = Config()
+       # self.no_json = 'NoJSON'
 
 
     def create_folder(self, folder_name, path=None, domain=None, method=None, content_type=None, accept=None,
@@ -131,6 +133,57 @@ class Calls:
 
         r.json = json_resp
         return r
+
+###################################################################################################
+
+    def move_item(self, name, destination, parent_path=None, domain=None, method=None, content_type=None,
+                  accept=None, username=None, password=None, print_call=True):
+
+        if domain is None:
+            domain = self.config.domain
+        if method is None:
+            method = 'POST'
+        if content_type is None:
+            content_type = 'application/json'
+        if accept is None:
+            accept = 'application/json'
+        if username is None:
+            username = self.config.admin_login
+        if password is None:
+            password = self.config.password
+        if parent_path is None:
+            parent_path = self.config.testpath
+
+        endpoint = '/public-api/v1/fs'
+        url = '%s%s%s/%s' % (domain, endpoint, parent_path, name)
+        headers = dict()
+        headers['Content-Type'] = content_type
+        headers['Accept'] = accept
+        data = dict()
+        data['action'] = 'move'
+        data['destination'] = destination + '/' + name
+        data = json.dumps(data)
+
+        headers['Authorization'] = 'Basic %s' % base64.b64encode('%s:%s' % (username, password))
+
+        r = requests.request(
+            method=method,
+            url=url,
+            headers=headers,
+            data=data
+        )
+
+        try:
+            json_resp = json.loads(r.content)
+        except ValueError:
+            json_resp = self.no_json
+
+        r.json = json_resp
+        if print_call:
+            self.nice_print_out(call_name='Move Item', r=r, caller=inspect.stack()[1][3])
+
+        return r
+
 
 #########---------------------------------------------------------------------------------------------------#######
 
