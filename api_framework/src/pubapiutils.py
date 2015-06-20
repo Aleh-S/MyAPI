@@ -6,7 +6,7 @@ import inspect
 from random import randint
 import base64
 
-###############################################################################
+
 class Config:
     def __init__(self):
         self.parser = SafeConfigParser()
@@ -20,7 +20,7 @@ class Config:
         self.puser = self.parser.get('Server', 'puser')
         self.testpath = self.parser.get('Server', 'testpath')
 
-################################################################################
+
 
 class Calls:
     def __init__(self):
@@ -77,7 +77,7 @@ class Calls:
 
         return r
 
-    ####--------------------------------------------------------------------####
+
 
 
     def delete_folder(self, name, parent_path=None,domain=None, method=None, content_type=None, accept=None,
@@ -127,7 +127,7 @@ class Calls:
 
         return r
 
-###################################################################################################
+
 
     def move_item(self, name, destination, parent_path=None, domain=None, method=None, content_type=None,
                   accept=None, username=None, password=None, print_call=True):
@@ -178,7 +178,7 @@ class Calls:
         return r
 
 
-#########---------------------------------------------------------------------------------------------------#######
+
 
 
     def set_perms(self, folder_path, users, permission, domain=None, method=None, content_type=None, accept=None,
@@ -233,7 +233,7 @@ class Calls:
 
         return r
 
-##########-------------------------------------------------------------------------###############
+
 
     def list_perms(self, folder_path, users, domain=None, method=None, content_type=None, accept=None,
                               username=None, password=None, print_call=True):
@@ -279,7 +279,7 @@ class Calls:
 
         return r
 
-####################################################################################
+
 
     def list_folders(self, folder_path, domain=None, method=None, content_type=None, accept=None, username=None,
                      password=None, print_call=True, caller=None):
@@ -322,11 +322,7 @@ class Calls:
         if print_call:
             self.nice_print_out(call_name='List Folders', r=r, caller=caller)
 
-
         return r
-
-
-###################################################################################
 
     @staticmethod
     def nice_print_out(call_name, r, caller):
@@ -348,7 +344,7 @@ class Calls:
         else:
             print('\nNo body in the response.')
 
-####################################################################################
+
 
 class Utils:
     def __init__(self):
