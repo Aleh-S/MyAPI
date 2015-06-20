@@ -2,6 +2,7 @@ from pubapiutils import Calls
 from pubapiutils import Config
 from pubapiutils import Utils
 import httplib
+import nose
 from unittest import TestCase
 
 
